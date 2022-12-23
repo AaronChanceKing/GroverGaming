@@ -8,12 +8,12 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     [Header("Money")]
-    [SerializeField] float _balance = 10.00f;
     [SerializeField] TMP_Text _balanceText;
     [Space(10)]
-    [SerializeField] int _bet = 0;
     [SerializeField] TMP_Text _betText;
     [SerializeField] float[] _betAmounts;
+    int _bet = 0;
+    float _balance = 10.00f;
 
     [Header("Game")]
     [SerializeField] Button[] _buttons;
@@ -39,32 +39,34 @@ public class GameManager : MonoBehaviour
         SFXManager.Instance.PlayOnShot(_spinClick);
     }
 
-    public void IncreaseBet()
+    public void Bet(bool increase)
     {
-        if (_bet < _betAmounts.Length - 1 &&
-            _balance >= _betAmounts[_bet +1])
+        if(increase)
         {
-            _bet++;
-            _betText.text =  String.Format("{0:C}", _betAmounts[_bet]);
-            SFXManager.Instance.PlayOnShot(_goodClick);
+            if (_bet < _betAmounts.Length - 1 &&
+                _balance >= _betAmounts[_bet + 1])
+            {
+                _bet++;
+                _betText.text = String.Format("{0:C}", _betAmounts[_bet]);
+                SFXManager.Instance.PlayOnShot(_goodClick);
+            }
+            else
+            {
+                SFXManager.Instance.PlayOnShot(_badClick);
+            }
         }
         else
         {
-            SFXManager.Instance.PlayOnShot(_badClick);
-        }
-    }
-
-    public void DecreaseBet()
-    {
-        if (_bet > 0)
-        {
-            _bet--;
-            _betText.text = String.Format("{0:C}", _betAmounts[_bet]);
-            SFXManager.Instance.PlayOnShot(_goodClick);
-        }
-        else
-        {
-            SFXManager.Instance.PlayOnShot(_badClick);
+            if (_bet > 0)
+            {
+                _bet--;
+                _betText.text = String.Format("{0:C}", _betAmounts[_bet]);
+                SFXManager.Instance.PlayOnShot(_goodClick);
+            }
+            else
+            {
+                SFXManager.Instance.PlayOnShot(_badClick);
+            }
         }
     }
 }
