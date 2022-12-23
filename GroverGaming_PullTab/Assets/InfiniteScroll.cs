@@ -6,42 +6,56 @@ using UnityEngine.UI;
 public class InfiniteScroll : MonoBehaviour
 {
     [Header("Objects")]
-    [SerializeField] GameObject _content;
-    [SerializeField] RectTransform _endPoint;
-    [SerializeField] RectTransform _resetPoint;
-    [SerializeField] RectTransform _stopPoint;
-    [SerializeField] List<SymbolWeight> _symbols;
+    [SerializeField] [Tooltip("Parent object holding all slots")] 
+    GameObject _content;
+
+    [SerializeField] [Tooltip("Where the wheel needs to start looping")]
+    RectTransform _endPoint;
+
+    [SerializeField] [Tooltip("Where the panel will loop back to")] 
+    RectTransform _resetPoint; 
+
+    [SerializeField] [Tooltip("To stop the wheel in view and keep all 3 on track")]
+    RectTransform _stopPoint;
+
+    [SerializeField] [Tooltip("All possible symbols to pick")]
+    List<SymbolWeight> _symbols;
 
     [Header("Rotation")]
-    [SerializeField] float _speed;
-    [SerializeField] float _spinTime;
+    [SerializeField] [Tooltip("How fast the bars will spin")]
+    float _speed;
+    [SerializeField] [Tooltip("How long the bars will spin")]
+    float _spinTime;
+
     float start;
     float reset;
     int stop;
 
     private void Awake()
     {
+        //Keep track of the y postion since object only move up
         start = _endPoint.localPosition.y;
         reset = _resetPoint.localPosition.y;
-        stop = (int)_stopPoint.localPosition.y;
+        stop = (int)_stopPoint.localPosition.y; //Round off to avoid floating nightmare
+        _content.GetComponent<VerticalLayoutGroup>().enabled = true;
     }
 
     public void Spin() => StartCoroutine(SpinCoroutine());
 
     IEnumerator SpinCoroutine()
     {
+        _content.GetComponent<VerticalLayoutGroup>().enabled = false;
         float time = Time.time + _spinTime;
         List<RectTransform> children = new List<RectTransform>();
 
         for (int i = 1; i < _content.transform.childCount - 1; i++)
             children.Add(_content.transform.GetChild(i).gameObject.GetComponent<RectTransform>());
 
-
-        while (Time.time < time || (int)_content.transform.GetChild(1).gameObject.GetComponent<RectTransform>().localPosition.y != stop)
+        while (Time.time < time)
         {
             for (int i = 0; i < children.Count; i++)
             {
-                children[i].localPosition += new Vector3(0, _speed, 0);
+                children[i].localPosition += new Vector3(0, _speed * Time.fixedDeltaTime, 0);
 
                 if (children[i].localPosition.y > start)
                 {
@@ -53,7 +67,7 @@ public class InfiniteScroll : MonoBehaviour
             yield return null;
         }
 
-        //FOR TESTING
+        //Set symbols based on weighed randomness
         List<int> rand = new List<int>();
         List<SymbolWeight> symbols = new List<SymbolWeight>(_symbols);
 
@@ -71,5 +85,7 @@ public class InfiniteScroll : MonoBehaviour
 
         symbols.Clear();
         GameManager.Instance.Reset();
+
+        _content.GetComponent<VerticalLayoutGroup>().enabled = true;
     }
 }

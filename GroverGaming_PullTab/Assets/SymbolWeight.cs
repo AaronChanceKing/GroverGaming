@@ -8,7 +8,6 @@ public class SymbolWeight : ScriptableObject
 {
     [Header("look")]
     public Sprite _symbol;
-    public Color _color;
 
     [Header("Value")]
     public int _weight;

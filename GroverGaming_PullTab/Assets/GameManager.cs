@@ -30,22 +30,34 @@ public class GameManager : MonoBehaviour
     List<SymbolWeight> _vert0;
     List<SymbolWeight> _vert1;
 
-    [Space(10)]
-    [SerializeField] AudioClip _goodClick;
-    [SerializeField] AudioClip _badClick;
-    [SerializeField] AudioClip _spinClick;
     int _resetHold = 0;
 
     private void Awake()
     {
         if (Instance == null) Instance = this;
+
+        Application.targetFrameRate = 60;
+    }
+    private void OnEnable()
+    {
+        //Delegate all buttons
+        _buttons[0].onClick.AddListener(delegate { Pull(); });
+        _buttons[1].onClick.AddListener(delegate { Bet(true); });
+        _buttons[2].onClick.AddListener(delegate { Bet(false); });
+    }
+    private void OnDisable()
+    {
+        //Remove all listners
+        _buttons[0].onClick.RemoveAllListeners();
+        _buttons[1].onClick.RemoveAllListeners();
+        _buttons[2].onClick.RemoveAllListeners();
     }
 
     public void Pull()
     {
         if (_bet == 0)
         {
-            SFXManager.Instance.PlayOnShot(_badClick);
+            SFXManager.Instance.BadClick();
             return;
         }
 
@@ -55,9 +67,12 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < _winLines.Length; i++)
             _winLines[i].SetActive(false);
 
+        for (int i = 0; i < _bars.Length; i++)
+            _bars[i].GetComponentInParent<InfiniteScroll>().Spin();
+
         _balance -= _betAmounts[_bet];
         _balanceText.text = String.Format("{0:C}", _balance);
-        SFXManager.Instance.PlayOnShot(_spinClick);
+        SFXManager.Instance.SpinClick();
     }
 
     public void Bet(bool increase)
@@ -69,11 +84,11 @@ public class GameManager : MonoBehaviour
             {
                 _bet++;
                 _betText.text = String.Format("{0:C}", _betAmounts[_bet]);
-                SFXManager.Instance.PlayOnShot(_goodClick);
+                SFXManager.Instance.GoodClick();
             }
             else
             {
-                SFXManager.Instance.PlayOnShot(_badClick);
+                SFXManager.Instance.BadClick();
             }
         }
         else
@@ -82,11 +97,11 @@ public class GameManager : MonoBehaviour
             {
                 _bet--;
                 _betText.text = String.Format("{0:C}", _betAmounts[_bet]);
-                SFXManager.Instance.PlayOnShot(_goodClick);
+                SFXManager.Instance.GoodClick();
             }
             else
             {
-                SFXManager.Instance.PlayOnShot(_badClick);
+                 SFXManager.Instance.BadClick();
             }
         }
     }
@@ -94,11 +109,15 @@ public class GameManager : MonoBehaviour
     public void Reset()
     {
         _resetHold++;
+        SFXManager.Instance.SpinSoundReduce();
 
+        //make sure all 3 wheels are done
         if(_resetHold == 3)
         {
             _resetHold = 0;
+            SFXManager.Instance.SpinStop();
 
+            //reset the bars for checking
             _hor0 = new List<SymbolWeight>();
             _hor1 = new List<SymbolWeight>();
             _hor2 = new List<SymbolWeight>();
@@ -119,6 +138,7 @@ public class GameManager : MonoBehaviour
 
             if(!CheckForWin())
             {
+                //No win the buttons will come back instantly
                 for (int i = 0; i < _buttons.Length; i++)
                     _buttons[i].interactable = true;
             }
@@ -144,6 +164,8 @@ public class GameManager : MonoBehaviour
         return index;
     }
 
+    //TODO
+    //Really ugly and want to refactor this
     bool CheckForWin()
     {
         bool value = false;

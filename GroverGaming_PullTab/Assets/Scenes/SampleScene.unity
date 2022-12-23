@@ -317,7 +317,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Denomination
+  m_text: Bet
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -344,7 +344,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 29.25
+  m_fontSize: 49.7
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -453,7 +453,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -505872187, guid: 36c4ddc5a1272ce4b8e3b8734a388f2d, type: 3}
+  m_Sprite: {fileID: -1690215867, guid: 36c4ddc5a1272ce4b8e3b8734a388f2d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -535,7 +535,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.75278413, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -643,55 +643,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 168068550}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1328729358}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: Pull
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 241812722}
-        m_TargetAssemblyTypeName: InfiniteScroll, Assembly-CSharp
-        m_MethodName: Spin
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 995762802}
-        m_TargetAssemblyTypeName: InfiniteScroll, Assembly-CSharp
-        m_MethodName: Spin
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1716049302}
-        m_TargetAssemblyTypeName: InfiniteScroll, Assembly-CSharp
-        m_MethodName: Spin
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &168068550
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -789,7 +741,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -505872187, guid: 36c4ddc5a1272ce4b8e3b8734a388f2d, type: 3}
+  m_Sprite: {fileID: 2125799441, guid: 36c4ddc5a1272ce4b8e3b8734a388f2d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1163,7 +1115,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a481987a33adf4f46b73d853d1fb2966, type: 2}
   - {fileID: 11400000, guid: 25134de03a0e591459b93761264841fa, type: 2}
   - {fileID: 11400000, guid: a22aa774cc89c5d4fa7dd24a25bcc1ee, type: 2}
-  _speed: 5
+  _speed: 3000
   _spinTime: 1
 --- !u!1 &256890541
 GameObject:
@@ -1224,7 +1176,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -505872187, guid: 36c4ddc5a1272ce4b8e3b8734a388f2d, type: 3}
+  m_Sprite: {fileID: 1750611907, guid: 36c4ddc5a1272ce4b8e3b8734a388f2d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1314,7 +1266,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -505872187, guid: 36c4ddc5a1272ce4b8e3b8734a388f2d, type: 3}
+  m_Sprite: {fileID: -647455998, guid: 36c4ddc5a1272ce4b8e3b8734a388f2d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1356,6 +1308,7 @@ GameObject:
   - component: {fileID: 350939103}
   - component: {fileID: 350939105}
   - component: {fileID: 350939104}
+  - component: {fileID: 350939106}
   m_Layer: 0
   m_Name: ResetPoint
   m_TagString: Untagged
@@ -1421,6 +1374,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 350939102}
   m_CullTransparentMesh: 1
+--- !u!114 &350939106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 350939102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 306cc8c2b49d7114eaa3623786fc2126, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreLayout: 1
+  m_MinWidth: -1
+  m_MinHeight: -1
+  m_PreferredWidth: -1
+  m_PreferredHeight: -1
+  m_FlexibleWidth: -1
+  m_FlexibleHeight: -1
+  m_LayoutPriority: 1
 --- !u!1 &374497724
 GameObject:
   m_ObjectHideFlags: 0
@@ -1519,19 +1492,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 374497728}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1328729358}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: Bet
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &374497728
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1692,7 +1653,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -505872187, guid: 36c4ddc5a1272ce4b8e3b8734a388f2d, type: 3}
+  m_Sprite: {fileID: 2125799441, guid: 36c4ddc5a1272ce4b8e3b8734a388f2d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1782,7 +1743,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -505872187, guid: 36c4ddc5a1272ce4b8e3b8734a388f2d, type: 3}
+  m_Sprite: {fileID: 1174416556, guid: 36c4ddc5a1272ce4b8e3b8734a388f2d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1872,7 +1833,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -505872187, guid: 36c4ddc5a1272ce4b8e3b8734a388f2d, type: 3}
+  m_Sprite: {fileID: 1174416556, guid: 36c4ddc5a1272ce4b8e3b8734a388f2d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2044,7 +2005,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.75278413, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2218,7 +2179,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -505872187, guid: 36c4ddc5a1272ce4b8e3b8734a388f2d, type: 3}
+  m_Sprite: {fileID: 41228649, guid: 36c4ddc5a1272ce4b8e3b8734a388f2d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2384,7 +2345,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -505872187, guid: 36c4ddc5a1272ce4b8e3b8734a388f2d, type: 3}
+  m_Sprite: {fileID: 812309912, guid: 36c4ddc5a1272ce4b8e3b8734a388f2d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2474,7 +2435,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -505872187, guid: 36c4ddc5a1272ce4b8e3b8734a388f2d, type: 3}
+  m_Sprite: {fileID: 2125799441, guid: 36c4ddc5a1272ce4b8e3b8734a388f2d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2655,8 +2616,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a481987a33adf4f46b73d853d1fb2966, type: 2}
   - {fileID: 11400000, guid: 25134de03a0e591459b93761264841fa, type: 2}
   - {fileID: 11400000, guid: a22aa774cc89c5d4fa7dd24a25bcc1ee, type: 2}
-  _speed: 5
-  _spinTime: 2
+  _speed: 3500
+  _spinTime: 3
 --- !u!114 &995762803
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2746,7 +2707,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.75278413, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2830,7 +2791,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -505872187, guid: 36c4ddc5a1272ce4b8e3b8734a388f2d, type: 3}
+  m_Sprite: {fileID: -647455998, guid: 36c4ddc5a1272ce4b8e3b8734a388f2d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2963,6 +2924,7 @@ GameObject:
   - component: {fileID: 1328729358}
   - component: {fileID: 1328729360}
   - component: {fileID: 1328729361}
+  - component: {fileID: 1328729362}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -3006,9 +2968,6 @@ MonoBehaviour:
   - {fileID: 677263705}
   _flashTime: 0.2
   _flashAmount: 5
-  _goodClick: {fileID: 8300000, guid: 3c3053eac3d410a41bfe1a89e2e6a8ba, type: 3}
-  _badClick: {fileID: 8300000, guid: e088c2390bb2417419b7be4764f1278c, type: 3}
-  _spinClick: {fileID: 8300000, guid: 3c3053eac3d410a41bfe1a89e2e6a8ba, type: 3}
 --- !u!4 &1328729359
 Transform:
   m_ObjectHideFlags: 0
@@ -3037,6 +2996,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _audio: {fileID: 1328729361}
+  _slotAudio: {fileID: 1328729362}
+  _goodClick: {fileID: 8300000, guid: 3c3053eac3d410a41bfe1a89e2e6a8ba, type: 3}
+  _badClick: {fileID: 8300000, guid: e088c2390bb2417419b7be4764f1278c, type: 3}
 --- !u!82 &1328729361
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3050,6 +3012,102 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!82 &1328729362
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1328729357}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: ecec678e69bd9344eb2348afb1ec2b93, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.9
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -3192,7 +3250,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -505872187, guid: 36c4ddc5a1272ce4b8e3b8734a388f2d, type: 3}
+  m_Sprite: {fileID: 41228649, guid: 36c4ddc5a1272ce4b8e3b8734a388f2d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3350,7 +3408,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -505872187, guid: 36c4ddc5a1272ce4b8e3b8734a388f2d, type: 3}
+  m_Sprite: {fileID: -1690215867, guid: 36c4ddc5a1272ce4b8e3b8734a388f2d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3519,7 +3577,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -505872187, guid: 36c4ddc5a1272ce4b8e3b8734a388f2d, type: 3}
+  m_Sprite: {fileID: -647455998, guid: 36c4ddc5a1272ce4b8e3b8734a388f2d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4157,7 +4215,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.75278413, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -4241,7 +4299,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -505872187, guid: 36c4ddc5a1272ce4b8e3b8734a388f2d, type: 3}
+  m_Sprite: {fileID: 1750611907, guid: 36c4ddc5a1272ce4b8e3b8734a388f2d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4331,7 +4389,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -505872187, guid: 36c4ddc5a1272ce4b8e3b8734a388f2d, type: 3}
+  m_Sprite: {fileID: 812309912, guid: 36c4ddc5a1272ce4b8e3b8734a388f2d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4656,7 +4714,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.75278413, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -4740,7 +4798,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -505872187, guid: 36c4ddc5a1272ce4b8e3b8734a388f2d, type: 3}
+  m_Sprite: {fileID: 812309912, guid: 36c4ddc5a1272ce4b8e3b8734a388f2d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4837,8 +4895,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a481987a33adf4f46b73d853d1fb2966, type: 2}
   - {fileID: 11400000, guid: 25134de03a0e591459b93761264841fa, type: 2}
   - {fileID: 11400000, guid: a22aa774cc89c5d4fa7dd24a25bcc1ee, type: 2}
-  _speed: 5
-  _spinTime: 3
+  _speed: 4000
+  _spinTime: 5
 --- !u!114 &1716049303
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5010,7 +5068,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -505872187, guid: 36c4ddc5a1272ce4b8e3b8734a388f2d, type: 3}
+  m_Sprite: {fileID: 1174416556, guid: 36c4ddc5a1272ce4b8e3b8734a388f2d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5100,7 +5158,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -505872187, guid: 36c4ddc5a1272ce4b8e3b8734a388f2d, type: 3}
+  m_Sprite: {fileID: -1690215867, guid: 36c4ddc5a1272ce4b8e3b8734a388f2d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5417,6 +5475,7 @@ GameObject:
   - component: {fileID: 1919043805}
   - component: {fileID: 1919043807}
   - component: {fileID: 1919043806}
+  - component: {fileID: 1919043808}
   m_Layer: 0
   m_Name: ResetPoint
   m_TagString: Untagged
@@ -5482,6 +5541,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1919043804}
   m_CullTransparentMesh: 1
+--- !u!114 &1919043808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1919043804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 306cc8c2b49d7114eaa3623786fc2126, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreLayout: 1
+  m_MinWidth: -1
+  m_MinHeight: -1
+  m_PreferredWidth: -1
+  m_PreferredHeight: -1
+  m_FlexibleWidth: -1
+  m_FlexibleHeight: -1
+  m_LayoutPriority: 1
 --- !u!1 &1958017768
 GameObject:
   m_ObjectHideFlags: 0
@@ -5839,6 +5918,7 @@ GameObject:
   - component: {fileID: 2069809508}
   - component: {fileID: 2069809510}
   - component: {fileID: 2069809509}
+  - component: {fileID: 2069809511}
   m_Layer: 0
   m_Name: ResetPoint
   m_TagString: Untagged
@@ -5904,6 +5984,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2069809507}
   m_CullTransparentMesh: 1
+--- !u!114 &2069809511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2069809507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 306cc8c2b49d7114eaa3623786fc2126, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreLayout: 1
+  m_MinWidth: -1
+  m_MinHeight: -1
+  m_PreferredWidth: -1
+  m_PreferredHeight: -1
+  m_FlexibleWidth: -1
+  m_FlexibleHeight: -1
+  m_LayoutPriority: 1
 --- !u!1 &2089467767
 GameObject:
   m_ObjectHideFlags: 0
@@ -5963,7 +6063,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -505872187, guid: 36c4ddc5a1272ce4b8e3b8734a388f2d, type: 3}
+  m_Sprite: {fileID: 1750611907, guid: 36c4ddc5a1272ce4b8e3b8734a388f2d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6053,7 +6153,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -505872187, guid: 36c4ddc5a1272ce4b8e3b8734a388f2d, type: 3}
+  m_Sprite: {fileID: 41228649, guid: 36c4ddc5a1272ce4b8e3b8734a388f2d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6182,19 +6282,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2099099109}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1328729358}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: Bet
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &2099099109
 MonoBehaviour:
   m_ObjectHideFlags: 0
