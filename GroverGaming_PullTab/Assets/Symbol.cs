@@ -5,11 +5,12 @@ using UnityEngine.UI;
 
 public class Symbol : MonoBehaviour
 {
-    public SymbolWeight symbolWeight;
+    public SymbolWeight GetSymbolWeight { get; private set; }
+
 
     public void SetSymbol(SymbolWeight symbol)
     {
-        symbolWeight = symbol;
+        GetSymbolWeight = symbol;
         GetComponent<Image>().sprite = symbol._symbol;
     }
 }

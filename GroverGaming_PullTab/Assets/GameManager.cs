@@ -18,17 +18,14 @@ public class GameManager : MonoBehaviour
 
     [Header("Game")]
     [SerializeField] Button[] _buttons;
-    [SerializeField] GameObject[] _bars;
+    [SerializeField] GameObject[] _wheels;
     [Space(20)]
     [SerializeField] GameObject[] _winLines;
     [SerializeField] float _flashTime = 0.2f;
     [SerializeField] int _flashAmount = 5;
 
-    List<SymbolWeight> _hor0;
-    List<SymbolWeight> _hor1;
-    List<SymbolWeight> _hor2;
-    List<SymbolWeight> _vert0;
-    List<SymbolWeight> _vert1;
+    //For win checking
+    List<List<SymbolWeight>> _winCheck = new List<List<SymbolWeight>>();
 
     int _resetHold = 0;
 
@@ -36,6 +33,10 @@ public class GameManager : MonoBehaviour
     {
         if (Instance == null) Instance = this;
 
+        for(int i = 0; i < 5; i++)
+            _winCheck.Add(new List<SymbolWeight>());
+
+        //Just to be sure
         Application.targetFrameRate = 60;
     }
     private void OnEnable()
@@ -53,9 +54,21 @@ public class GameManager : MonoBehaviour
         _buttons[2].onClick.RemoveAllListeners();
     }
 
+    private void Update()
+    {
+        //Because im lazy
+        if(Input.GetKeyDown("space") && _buttons[0].interactable)
+        {
+            _bet = 1;
+            _betText.text = String.Format("{0:C}", _betAmounts[_bet]);
+
+            Pull();
+        }
+    }
+
     public void Pull()
     {
-        if (_bet == 0)
+        if (_bet == 0 || _balance < _betAmounts[_bet])
         {
             SFXManager.Instance.BadClick();
             return;
@@ -64,11 +77,8 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < _buttons.Length; i++)
             _buttons[i].interactable = false;
 
-        for (int i = 0; i < _winLines.Length; i++)
-            _winLines[i].SetActive(false);
-
-        for (int i = 0; i < _bars.Length; i++)
-            _bars[i].GetComponentInParent<InfiniteScroll>().Spin();
+        for (int i = 0; i < _wheels.Length; i++)
+            _wheels[i].GetComponentInParent<InfiniteScroll>().Spin();
 
         _balance -= _betAmounts[_bet];
         _balanceText.text = String.Format("{0:C}", _balance);
@@ -112,94 +122,69 @@ public class GameManager : MonoBehaviour
         SFXManager.Instance.SpinSoundReduce();
 
         //make sure all 3 wheels are done
-        if(_resetHold == 3)
+        if (_resetHold != 3) return;
+
+        _resetHold = 0;
+        SFXManager.Instance.SpinStop();
+
+        //reset the bars for checking
+        for (int i = 0; i < _winCheck.Count; i++)
+            _winCheck[i].Clear();
+
+        for (int i = 0; i < _wheels.Length; i++)
         {
-            _resetHold = 0;
-            SFXManager.Instance.SpinStop();
+            //Horizontal bars
+            _winCheck[0].Add(_wheels[i].transform.GetChild(1).gameObject.GetComponent<Symbol>().GetSymbolWeight);
+            _winCheck[1].Add(_wheels[i].transform.GetChild(2).gameObject.GetComponent<Symbol>().GetSymbolWeight);
+            _winCheck[2].Add(_wheels[i].transform.GetChild(3).gameObject.GetComponent<Symbol>().GetSymbolWeight);
 
-            //reset the bars for checking
-            _hor0 = new List<SymbolWeight>();
-            _hor1 = new List<SymbolWeight>();
-            _hor2 = new List<SymbolWeight>();
-            _vert0 = new List<SymbolWeight>();
-            _vert1 = new List<SymbolWeight>();
-
-            for (int i = 0; i < _bars.Length; i++)
-            {
-                //Horizontal bars
-                _hor0.Add(_bars[i].transform.GetChild(1).gameObject.GetComponent<Symbol>().symbolWeight);
-                _hor1.Add(_bars[i].transform.GetChild(2).gameObject.GetComponent<Symbol>().symbolWeight);
-                _hor2.Add(_bars[i].transform.GetChild(3).gameObject.GetComponent<Symbol>().symbolWeight);
-
-                //Vertical bars
-                _vert0.Add(_bars[i].transform.GetChild(i + 1).gameObject.GetComponent<Symbol>().symbolWeight);
-                _vert1.Add(_bars[i].transform.GetChild(3 - i).gameObject.GetComponent<Symbol>().symbolWeight);
-            }
-
-            if(!CheckForWin())
-            {
-                //No win the buttons will come back instantly
-                for (int i = 0; i < _buttons.Length; i++)
-                    _buttons[i].interactable = true;
-            }
+            //Vertical bars
+            _winCheck[3].Add(_wheels[i].transform.GetChild(i + 1).gameObject.GetComponent<Symbol>().GetSymbolWeight);
+            _winCheck[4].Add(_wheels[i].transform.GetChild(3 - i).gameObject.GetComponent<Symbol>().GetSymbolWeight);
         }
+
+        if(!CheckForWin())
+            for (int i = 0; i < _buttons.Length; i++) //No win the buttons will come back instantly
+                _buttons[i].interactable = true;
     }
 
     public int GetRandomWeightedIndex(List<int> weights)
     {
         int weightSum = 0;
-        for (int i = 0; i < weights.Count; ++i)
+        //Get total sum of all weights
+        for (int i = 0; i < weights.Count; i++)
             weightSum += weights[i];
 
         int index = 0;
+
         int lastIndex = weights.Count - 1;
+
+        //Loop over 'all' weights
         while (index < lastIndex)
         {
-            if (UnityEngine.Random.Range(0, weightSum) < weights[index])
+            //If random number is less than the current index we return that index
+            if (UnityEngine.Random.Range(0, weightSum) < weights[index] * Mathf.CeilToInt((_bet + 1) / 2))
                 return index;
 
+            //Remove weight from total sum
             weightSum -= weights[index++];
         }
 
         return index;
     }
 
-    //TODO
-    //Really ugly and want to refactor this
     bool CheckForWin()
     {
         bool value = false;
 
-        if (_hor0[0] == _hor0[1] && _hor0[0] == _hor0[2])
+        for(int i = 0; i < _winCheck.Count; i++)
         {
-            StartCoroutine(WinFlash(_winLines[0], _hor0[0]._muliplyer));
-            value = true;
+            if(_winCheck[i][0] == _winCheck[i][1] && _winCheck[i][0] == _winCheck[i][2])
+            {
+                value = true;
+                StartCoroutine(WinFlash(_winLines[i], _winCheck[i][0]._muliplyer));
+            }
         }
-
-        if (_hor1[0] == _hor1[1] && _hor1[0] == _hor1[2])
-        {
-            StartCoroutine(WinFlash(_winLines[1], _hor1[0]._muliplyer));
-            value = true;
-        }
-
-        if (_hor2[0] == _hor2[1] && _hor2[0] == _hor2[2])
-        {
-            StartCoroutine(WinFlash(_winLines[2], _hor2[0]._muliplyer));
-            value = true;
-        }
-
-        if (_vert0[0] == _vert0[1] && _vert0[0] == _vert0[2])
-        {
-            StartCoroutine(WinFlash(_winLines[3], _vert0[0]._muliplyer));
-            value = true;
-        }
-
-        if (_vert1[0] == _vert1[1] && _vert1[0] == _vert1[2])
-        {
-            StartCoroutine(WinFlash(_winLines[4], _vert1[0]._muliplyer));
-            value = true;
-        }
-
         return value;
     }
 

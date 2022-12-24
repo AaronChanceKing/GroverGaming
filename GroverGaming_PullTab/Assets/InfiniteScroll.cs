@@ -25,18 +25,17 @@ public class InfiniteScroll : MonoBehaviour
     [SerializeField] [Tooltip("How fast the bars will spin")]
     float _speed;
     [SerializeField] [Tooltip("How long the bars will spin")]
-    float _spinTime;
+    int _rotations;
 
-    float start;
-    float reset;
-    int stop;
+    float _start;
+    float _reset;
 
     private void Awake()
     {
         //Keep track of the y postion since object only move up
-        start = _endPoint.localPosition.y;
-        reset = _resetPoint.localPosition.y;
-        stop = (int)_stopPoint.localPosition.y; //Round off to avoid floating nightmare
+        _start = _endPoint.localPosition.y;
+        _reset = _resetPoint.localPosition.y;
+
         _content.GetComponent<VerticalLayoutGroup>().enabled = true;
     }
 
@@ -45,33 +44,43 @@ public class InfiniteScroll : MonoBehaviour
     IEnumerator SpinCoroutine()
     {
         _content.GetComponent<VerticalLayoutGroup>().enabled = false;
-        float time = Time.time + _spinTime;
-        List<RectTransform> children = new List<RectTransform>();
 
+        SetSymbols();
+
+        List<RectTransform> children = new List<RectTransform>();
         for (int i = 1; i < _content.transform.childCount - 1; i++)
             children.Add(_content.transform.GetChild(i).gameObject.GetComponent<RectTransform>());
 
-        while (Time.time < time)
+        int rotations = children.Count * _rotations;
+        //Spin the wheel!!
+        while (rotations > 0)
         {
             for (int i = 0; i < children.Count; i++)
             {
-                children[i].localPosition += new Vector3(0, _speed * Time.fixedDeltaTime, 0);
+                children[i].localPosition += new Vector3(0, (rotations < _content.transform.childCount - 2 ? _speed / 2 : _speed) * Time.fixedDeltaTime, 0);
 
-                if (children[i].localPosition.y > start)
+                if (children[i].localPosition.y > _start)
                 {
-                    children[i].localPosition = new Vector3(children[i].localPosition.x, reset, 0);
+                    children[i].localPosition = new Vector3(children[i].localPosition.x, _reset, 0);
                     children[i].transform.SetSiblingIndex(9);
+                    rotations--;
                 }
             }
-
             yield return null;
         }
 
+        GameManager.Instance.Reset();
+
+        _content.GetComponent<VerticalLayoutGroup>().enabled = true;
+    }
+
+    void SetSymbols()
+    {
         //Set symbols based on weighed randomness
         List<int> rand = new List<int>();
         List<SymbolWeight> symbols = new List<SymbolWeight>(_symbols);
 
-        for(int i = 1; i < _content.transform.childCount - 1; i++)
+        for (int i = 1; i < _content.transform.childCount - 1; i++)
         {
             for (int j = 0; j < symbols.Count; j++)
                 rand.Add(symbols[j]._weight);
@@ -84,8 +93,5 @@ public class InfiniteScroll : MonoBehaviour
         }
 
         symbols.Clear();
-        GameManager.Instance.Reset();
-
-        _content.GetComponent<VerticalLayoutGroup>().enabled = true;
     }
 }
