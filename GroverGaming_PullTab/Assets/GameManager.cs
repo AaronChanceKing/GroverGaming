@@ -19,10 +19,15 @@ public class GameManager : MonoBehaviour
     [Header("Game")]
     [SerializeField] Button[] _buttons;
     [SerializeField] GameObject[] _wheels;
-    [Space(20)]
+
+    [Header("Winnings")]
     [SerializeField] GameObject[] _winLines;
     [SerializeField] float _flashTime = 0.2f;
     [SerializeField] int _flashAmount = 5;
+    [SerializeField] GameObject _winningScreen;
+    [SerializeField] TMP_Text _winningText;
+    float _winnings = 0.0f;
+
 
     //For win checking
     List<List<SymbolWeight>> _winCheck = new List<List<SymbolWeight>>();
@@ -73,6 +78,8 @@ public class GameManager : MonoBehaviour
             SFXManager.Instance.BadClick();
             return;
         }
+
+        _winnings = 0;
 
         for (int i = 0; i < _buttons.Length; i++)
             _buttons[i].interactable = false;
@@ -185,11 +192,16 @@ public class GameManager : MonoBehaviour
                 StartCoroutine(WinFlash(_winLines[i], _winCheck[i][0]._muliplyer));
             }
         }
+
+        if(value) StartCoroutine(ShowWinings());
+
         return value;
     }
 
     IEnumerator WinFlash(GameObject winLine, int multipliyer)
     {
+        _winnings += _betAmounts[_bet] * multipliyer;
+
         for(int i = 0; i < _flashAmount; i++)
         {
             winLine.SetActive(true);
@@ -197,13 +209,25 @@ public class GameManager : MonoBehaviour
             winLine.SetActive(false);
             yield return new WaitForSeconds(_flashTime);
         }
+    }
+
+    IEnumerator ShowWinings()
+    {
+        //Wait for win lines to finish
+        yield return new WaitForSeconds(_flashAmount * (_flashTime * 2));
+        
+        _winningScreen.SetActive(true);
+        _winningText.text = String.Format("{0:C}", _winnings);
+
+        //Temp 2 second wait
+        yield return new WaitForSeconds(2.0f);
+
+        _balance += _winnings;
+        _balanceText.text = String.Format("{0:C}", _balance);
 
         for (int i = 0; i < _buttons.Length; i++)
             _buttons[i].interactable = true;
 
-        float winnings = _betAmounts[_bet] * multipliyer;
-
-        _balance += winnings;
-        _balanceText.text = String.Format("{0:C}", _balance);
+        _winningScreen.SetActive(false);
     }
 }
