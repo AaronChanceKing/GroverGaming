@@ -344,7 +344,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 52.6
+  m_fontSize: 52.65
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -3245,7 +3245,7 @@ MonoBehaviour:
   - {fileID: 1544161981}
   - {fileID: 677263705}
   _flashTime: 0.2
-  _flashAmount: 5
+  _flashAmount: 3
   _winningScreen: {fileID: 1118866535}
   _winningText: {fileID: 870376185}
 --- !u!4 &1328729359
@@ -3279,6 +3279,7 @@ MonoBehaviour:
   _slotAudio: {fileID: 1328729362}
   _goodClick: {fileID: 8300000, guid: 3c3053eac3d410a41bfe1a89e2e6a8ba, type: 3}
   _badClick: {fileID: 8300000, guid: e088c2390bb2417419b7be4764f1278c, type: 3}
+  _winSound: {fileID: 8300000, guid: e14ba4248f0ab3340adbca8f4cc17567, type: 3}
 --- !u!82 &1328729361
 AudioSource:
   m_ObjectHideFlags: 0

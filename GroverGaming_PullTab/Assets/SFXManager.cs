@@ -11,6 +11,7 @@ public class SFXManager : MonoBehaviour
     [Header("Sounds")]
     [SerializeField] AudioClip _goodClick;
     [SerializeField] AudioClip _badClick;
+    [SerializeField] AudioClip _winSound;
 
     private void Awake()
     {
@@ -30,14 +31,18 @@ public class SFXManager : MonoBehaviour
     {
         _audio.PlayOneShot(_badClick);
     }
+    public void WinSound()
+    {
+        _audio.PlayOneShot(_winSound);
+    }
     public void SpinClick()
     {
-        _slotAudio.volume = 0.9f;
+        _slotAudio.volume = 0.5f;
         _slotAudio.Play();
     }
     public void SpinSoundReduce()
     {
-        _slotAudio.volume -= .3f;
+        _slotAudio.volume -= .15f;
     }
     public void SpinStop()
     {

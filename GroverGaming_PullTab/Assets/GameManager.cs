@@ -213,6 +213,7 @@ public class GameManager : MonoBehaviour
 
     IEnumerator ShowWinings()
     {
+        SFXManager.Instance.WinSound();
         //Wait for win lines to finish
         yield return new WaitForSeconds(_flashAmount * (_flashTime * 2));
         
